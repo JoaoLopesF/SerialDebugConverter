@@ -51,6 +51,10 @@ import net.miginfocom.swing.MigLayout;
 
 class ConvertPanel extends JPanel {
 
+	// Version
+
+	final String VERSION = "0.1.0";
+
 	// Dimensions
 
 	final int width = 600;
@@ -58,7 +62,7 @@ class ConvertPanel extends JPanel {
 
 	// Title
 
-	public final String tittle = "Convert Arduino code to SerialDebug";
+	public final String tittle = "Convert Arduino code to SerialDebug - Converter version " + VERSION;
 
 	// Variaveis
 
@@ -307,6 +311,8 @@ class ConvertPanel extends JPanel {
 		lblConversion.setFont(new Font(fontName, Font.BOLD, 13));
 		lblConversion.setBounds(6, 179, 573, 16);
 		panelConvert.add(lblConversion);
+
+		tabbedPane.setEnabledAt(1, false);
 		tabbedPane.setEnabledAt(2, false);
 
 		// Read properties
@@ -565,7 +571,8 @@ class ConvertPanel extends JPanel {
 							if (line.contains("#include \"SerialDebug.h\"")) {
 
 								lblAnalyze.setText("This source file already using SerialDebug Library");
-								break;
+								btnNext.setEnabled(false);
+								return;
 
 							}
 
@@ -573,7 +580,7 @@ class ConvertPanel extends JPanel {
 
 							if (!inPreCompiler && countBrackets == 0 && line.startsWith("#include")) {
 								posLastInclude = lineNumber + 1;
-								System.out.println("posUltInclude = " + posLastInclude);
+								System.out.println("posInclude = " + posLastInclude);
 							}
 
 							// Process global variables
@@ -588,13 +595,15 @@ class ConvertPanel extends JPanel {
 
 									String fields[] = aux.split(":");
 
+									int posName = (type.startsWith("unsigned") ? 2 : 1);
+
 									if (fields.length >= 2) {
 
 										totVarGlobals++;
 
 										GlobalVariable variable = new GlobalVariable();
 										variable.setNum(totVarGlobals);
-										variable.setName(fields[1]);
+										variable.setName(fields[posName]);
 										variable.setType(type);
 										variable.setPosType(posType);
 										System.out.println("variable: name=" + fields[1] + " type=" + type);
@@ -610,7 +619,9 @@ class ConvertPanel extends JPanel {
 
 							if (line.startsWith("void setup()") || line.startsWith("void setup ()")) {
 
-								posSetup = lastLineUtil; // lineNumber;
+								posSetup = lineNumber;
+
+								posLastInclude = lastLineUtil; // lineNumber;
 
 							}
 
@@ -620,7 +631,8 @@ class ConvertPanel extends JPanel {
 								posSetup = lineNumber;
 							}
 
-							if (posEndSetup == 0 && countBrackets == 0 && line.contains("}")) { // End of setup code
+							if (posSetup > 0 && posEndSetup == 0 && lineNumber > posSetup && countBrackets == 0
+									&& line.contains("}")) { // End of setup code
 
 								posEndSetup = lineNumber - 1;
 							}
@@ -728,8 +740,8 @@ class ConvertPanel extends JPanel {
 
 			if (fileDirDestiny.exists()) {
 
-//				lblConversao.setText("Unable to convert. Directory already exists: " + fileDir.getName() + "_Dbg");
-//				return;
+				lblConversion.setText("Unable to convert. Directory already exists: " + fileDir.getName() + "_Dbg");
+				return;
 
 			} else {
 
@@ -781,15 +793,22 @@ class ConvertPanel extends JPanel {
 
 					if (line.contains("Serial.print")) {
 
-						if (cmbDebugLevel.getSelectedIndex() == 0) { // Verbose
+						if (lineNumber >= posSetup && lineNumber <= posEndSetup) { // In setup ? -> debug level always
 
-							line = line.replace("Serial.printf", "debugV").replace("Serial.println", "printlnV")
-									.replace("Serial.print", "printV");
+							line = line.replace("Serial.printf", "debugA").replace("Serial.println", "printlnA")
+									.replace("Serial.print", "printA");
+						} else {
 
-						} else { // Debug
+							if (cmbDebugLevel.getSelectedIndex() == 0) { // Verbose
 
-							line = line.replace("Serial.printf", "debugD").replace("Serial.println", "printlnD")
-									.replace("Serial.print", "printD");
+								line = line.replace("Serial.printf", "debugV").replace("Serial.println", "printlnV")
+										.replace("Serial.print", "printV");
+
+							} else { // Debug
+
+								line = line.replace("Serial.printf", "debugD").replace("Serial.println", "printlnD")
+										.replace("Serial.print", "printD");
+							}
 						}
 					}
 
@@ -799,9 +818,9 @@ class ConvertPanel extends JPanel {
 
 					// Process
 
-//					if (lineNumber == posUltInclude) {
 //					if (lineNumber == (posSetup - 1)) {
-					if (lineNumber == posSetup) {
+//					if (lineNumber == posSetup) {
+					if (lineNumber == posLastInclude) {
 
 						// Generare include and options
 

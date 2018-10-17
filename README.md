@@ -1,13 +1,13 @@
 # SerialDebug Library for Arduino - source converter
 
-<a href="#releases">![build badge](https://img.shields.io/badge/version-v0.9.0-blue.svg)</a> <a href="https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/LICENSE.txt">![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)</a>
+<a href="#releases">![build badge](https://img.shields.io/badge/version-v0.1.0-blue.svg)</a> <a href="https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/LICENSE.txt">![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)</a>
 [![Gitter chat](https://badges.gitter.im/SerialDebug/gitter.png)](https://gitter.im/SerialDebug/Public)
 
 __SerialDebug__ is a improved serial debugging to Arduino, with simple software debugger,
 to see/change global variables, to add watch for these variables,
 or call a function, in runtime, using serial monitor.
 
-This Java program is a converter, to help to migrate your Arduinos codes to SerialDebug library
+This Java program is a converter, to help to migrate your Arduino codes, from Serial.prints to SerialDebug library
 
 ## Contents
 
