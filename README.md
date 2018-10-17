@@ -87,7 +87,7 @@ You can use this converter in 3 modes:
   Latest binary release:  
 
   - Uncompress the Zip file,
-  - And run the jar file 
+  - And run the jar file
 
 - In SerialDebugApp (not needs Java runtime)
 
@@ -95,7 +95,6 @@ You can use this converter in 3 modes:
 
 ## Releases
 
-### 0.9.0 - 2018-10-16
+### 0.1.0 - 2018-10-17
 
     - First beta
-
