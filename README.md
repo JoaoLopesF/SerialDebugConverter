@@ -84,7 +84,7 @@ You can use this converter in 3 modes:
 
   - You can download binary release of this converter
 
-  Latest binary release:  
+  Latest binary release: [Jar runnable - release v0.1.0](https://github.com/JoaoLopesF/SerialDebugConverter/releases/download/v0.1.0/SerialDebugConverter.jar.zip)
 
   - Uncompress the Zip file,
   - And run the jar file
