@@ -65,7 +65,6 @@ it help to keep updated.
 ![Screenshot 4](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot4.png)
 ![Screenshot 5](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot5.png)
 ![Screenshot 6](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot6.png)
-![Screenshot 7](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot7.png)
 
 ## Usage
 
