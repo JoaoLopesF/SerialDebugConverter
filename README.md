@@ -59,7 +59,13 @@ it help to keep updated.
 
 ## How it looks
 
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/EfvF55Ww-lU/0.jpg)](https://www.youtube.com/watch?v=EfvF55Ww-lU)
+![Screenshot 1](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot1.png)
+![Screenshot 2](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot2.png)
+![Screenshot 3](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot3.png)
+![Screenshot 4](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot4.png)
+![Screenshot 5](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot5.png)
+![Screenshot 6](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot6.png)
+![Screenshot 7](https://github.com/JoaoLopesF/SerialDebugConverter/blob/master/Screenshots/screenshot7.png)
 
 ## Usage
 
