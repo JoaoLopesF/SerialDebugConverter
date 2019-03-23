@@ -68,7 +68,7 @@ it help to keep updated.
 
 ## Usage
 
-This runs in MacOsx, Linux and Windows (and other supported by Java).
+This runs in MacOs, Linux and Windows (and other supported by Java).
 
 You can use this converter in 3 modes:
 
